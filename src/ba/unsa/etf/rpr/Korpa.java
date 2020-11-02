@@ -3,15 +3,14 @@ package ba.unsa.etf.rpr;
 import java.util.Objects;
 
 public class Korpa {
-    int ukupnaCijenaArtikala, artiklSaKodom;
-    Artikl[] a = new Artikl[50];
-    int i = 0;
+    private Artikl[] artikli = new Artikl[50];
+    private int brojDodatihArtikala = 0;
 
     public int dajUkupnuCijenuArtikala() {
         int suma = 0;
-        for (Artikl x : a) {
-            if (x == null) break;
-            suma = suma + x.getCijena();
+        for (Artikl artikal : artikli) {
+            if (artikal == null) break;
+            suma = suma + artikal.getCijena();
         }
         return suma;
     }
@@ -20,31 +19,31 @@ public class Korpa {
     public Artikl izbaciArtiklSaKodom(String kod) {
         Artikl izbacena = null;
         int index = 0;
-        for (Artikl h : a) {
-            if (Objects.equals(h.getKod(), kod)) {
-                for (int j = index; j < a.length - 1; j++) {
-                    a[j] = a[j + 1];
-                    i--;
+        for (Artikl artikal : artikli) {
+            if (Objects.equals(artikal.getKod(), kod)) {
+                for (int j = index; j < artikli.length - 1; j++) {
+                    artikli[j] = artikli[j + 1];
+                    brojDodatihArtikala--;
                 }
-                izbacena = h;
+                izbacena = artikal;
                 break;
             }
             index = index + 1;
         }
         // a = Arrays.stream(this.a).filter((x) -> (x.getKod()).equals(kod)).toArray();
-        if (izbacena != null) return izbacena;
+      //  if (izbacena != null) return izbacena;
 
-        return null;
+        return izbacena;
     }
 
     public Artikl[] getArtikli() {
-        return a;
+        return artikli;
     }
 
-    public boolean dodajArtikl(Artikl k) {
-        if (i > 50) return false;
-        else a[i] = k;
-        i++;
+    public boolean dodajArtikl(Artikl artikal) {
+        if (brojDodatihArtikala >= 50) return false;
+        else artikli[brojDodatihArtikala] = artikal;
+        brojDodatihArtikala++;
         return true;
     }
 
