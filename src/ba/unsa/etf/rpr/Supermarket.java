@@ -8,7 +8,6 @@ public class Supermarket {
 
     void dodajArtikl(Artikl a) {
         if (brojDodatihArtikala >= 1000) return;
-        if(brojDodatihArtikala<0) brojDodatihArtikala=20;
         artikli[brojDodatihArtikala] = a;
         brojDodatihArtikala++;
     }
@@ -24,8 +23,8 @@ public class Supermarket {
             if (Objects.equals(artikal.getKod(), kod)) {
                 for (int j = index; j < artikli.length - 1; j++) {
                     artikli[j] = artikli[j + 1];
-                    brojDodatihArtikala--;
                 }
+                brojDodatihArtikala--;
                 izbacena = artikal;
                 break;
             }

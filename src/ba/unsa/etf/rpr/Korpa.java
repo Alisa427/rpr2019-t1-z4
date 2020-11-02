@@ -23,16 +23,13 @@ public class Korpa {
             if (Objects.equals(artikal.getKod(), kod)) {
                 for (int j = index; j < artikli.length - 1; j++) {
                     artikli[j] = artikli[j + 1];
-                    brojDodatihArtikala--;
                 }
+                brojDodatihArtikala--;
                 izbacena = artikal;
                 break;
             }
             index = index + 1;
         }
-        // a = Arrays.stream(this.a).filter((x) -> (x.getKod()).equals(kod)).toArray();
-      //  if (izbacena != null) return izbacena;
-
         return izbacena;
     }
 
